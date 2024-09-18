@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
 
 function Navbar() {
   const currentRoute = useLocation();
   console.log(currentRoute);
+
+  const { numberOfItems } = useContext(CartContext);
 
   return (
     <nav>
@@ -17,6 +21,12 @@ function Navbar() {
           <Link to="/about">About</Link>
         </li>
       </ul>
+
+      {currentRoute.pathname === '/shop' && (
+        <div>
+          <span>Cart: ({numberOfItems})</span>
+        </div>
+      )}
     </nav>
   )
 }
