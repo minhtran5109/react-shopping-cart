@@ -24,6 +24,7 @@ function Navbar() {
       {currentRoute.pathname === '/shop' && (
         <div>
           <span>Cart: ({numberOfItems})</span>
+          <button>Checkout</button>
         </div>
       )}
     </nav>

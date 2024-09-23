@@ -33,9 +33,6 @@ function Shop() {
       <div className="product-list">
         {products.length > 0 ? (
           products.map((product) => (
-            // <div key={product.id}>
-            //   <h3>{product.title}</h3>
-            // </div>
             <Card 
               key={product.id}
               product={product}
