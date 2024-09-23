@@ -4,7 +4,6 @@ import { CartContext } from '../context/CartContext';
 
 function Navbar() {
   const currentRoute = useLocation();
-  console.log(currentRoute);
 
   const { numberOfItems } = useContext(CartContext);
 

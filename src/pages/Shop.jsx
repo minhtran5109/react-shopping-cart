@@ -1,57 +1,54 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
+import Card from "../components/Card";
 
-const BASED_API = "https://fakestoreapi.com/products/"
-
-async function fetchProduct(query = '') {
-  const response = await fetch(`${BASED_API}/${query}`);
-  const product = await response.json();
-  return new Promise((resolve) => {
-    resolve({
-      category: product.category,
-      name: product.title,
-      img_src: product.image,
-      description: product.description,
-      price: product.price,
-    })
-  })
-  // return product;
-}
+const BASED_API = "https://fakestoreapi.com/products"
+const query = '?limit=5';
 
 function Shop() {
   const { numberOfItems, setNumberOfItems } = useContext(CartContext);
   const [loading, setLoading] = useState(true);
-  const [productData, setProductData] = useState(null);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function loadData() {
-      const result = await fetchProduct(1);
-      setProductData(result);
+      const response = await fetch(`${BASED_API}${query}`);
+      const data = await response.json();
+      setProducts(data);
       setLoading(false);
-    }
+    };
+
     loadData();
   }, [])
-  console.log(productData);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
+  // console.log(products)
   return (
     <div>
+  
       <h1>Shop Page</h1>
-
-      <div>
-        <p>Name: {productData.name}</p>
-        <p>Price: {productData.price}</p>
-        <img src={productData.img_src}></img>
+      <div className="product-list">
+        {products.length > 0 ? (
+          products.map((product) => (
+            // <div key={product.id}>
+            //   <h3>{product.title}</h3>
+            // </div>
+            <Card 
+              key={product.id}
+              product={product}
+            />
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
 
-      <p>Current number of items: {numberOfItems}</p>
-      <button onClick={() => setNumberOfItems(numberOfItems + 1)}>
-        Increase
-      </button>
+
     </div>
+
   )
 }
 

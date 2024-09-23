@@ -1,0 +1,11 @@
+/* consider css modules */
+
+.card {
+  width: 200px;
+  background-color: antiquewhite;
+  margin-top: 20px;
+}
+
+.card img {
+  width: 100px;
+}
