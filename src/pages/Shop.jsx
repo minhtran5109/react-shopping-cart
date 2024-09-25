@@ -14,7 +14,11 @@ function Shop() {
     async function loadData() {
       const response = await fetch(`${BASED_API}${query}`);
       const data = await response.json();
-      setProducts(data);
+      const productsWithAmounts = data.map(product => ({
+        ...product,
+        amount: 1
+      }));
+      setProducts(productsWithAmounts);
       setLoading(false);
     };
 
@@ -25,7 +29,33 @@ function Shop() {
     return <div>Loading...</div>;
   }
 
-  // console.log(products)
+  console.log(products);
+
+  function updateAmount(productId, newAmountValue) {
+    setProducts(prevProducts => 
+      prevProducts.map(product => 
+        product.id === productId 
+        ? { ...product, amount: newAmountValue}
+        : product
+        )
+    );
+  }
+
+  function resetAmount(productId) {
+    setProducts(prevProducts => 
+      prevProducts.map(product => 
+        product.id === productId 
+        ? { ...product, amount: 1 }
+        : product
+        )
+    );
+  }
+
+  function addToCart(product) {
+    setNumberOfItems(numberOfItems + product.amount)
+    resetAmount(product.id)
+  }
+
   return (
     <div>
   
@@ -36,6 +66,8 @@ function Shop() {
             <Card 
               key={product.id}
               product={product}
+              updateAmount={updateAmount}
+              addToCart= {() => addToCart(product)}
             />
           ))
         ) : (
