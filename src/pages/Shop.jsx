@@ -16,7 +16,7 @@ function Shop() {
       const data = await response.json();
       const productsWithAmounts = data.map(product => ({
         ...product,
-        amount: 1
+        amount: '',
       }));
       setProducts(productsWithAmounts);
       setLoading(false);
@@ -45,14 +45,15 @@ function Shop() {
     setProducts(prevProducts => 
       prevProducts.map(product => 
         product.id === productId 
-        ? { ...product, amount: 1 }
+        ? { ...product, amount: '' }
         : product
         )
     );
   }
 
   function addToCart(product) {
-    setNumberOfItems(numberOfItems + product.amount)
+    const productAmount = product.amount === '' ? 1 : product.amount;
+    setNumberOfItems(numberOfItems + productAmount)
     resetAmount(product.id)
   }
 

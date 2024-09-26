@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import '../styles/Card.css'
 
+//prevent 0 from always showing in user input
+
 function Card({product, updateAmount, addToCart}) {
+  function handleInputChange(id, value) {
+    const newAmountValue = value === '' ? '' : parseInt(value, 10);
+    updateAmount(id, isNaN(newAmountValue) ? '' : newAmountValue);
+  }
+
   return (
     <div className="card">
       <p>Name: {product.title}</p>
@@ -10,11 +17,12 @@ function Card({product, updateAmount, addToCart}) {
 
     <div>
       {/* <p>Current amount: {product.amount}</p> */}
-      <button onClick={() => updateAmount(product.id, product.amount+1)}>+</button>
+      <button onClick={() => updateAmount(product.id, product.amount === '' ? 1 : product.amount + 1)}>+</button>
       <input 
         type="number"
         value={product.amount}
-        onChange={(e) => updateAmount(product.id, parseInt(e.target.value) || 0)}
+        placeholder="0"
+        onChange={(e) => handleInputChange(product.id, e.target.value)}
       />
       <button onClick={() => updateAmount(product.id, Math.max(product.amount-1, 1))}>-</button>
       <br />
@@ -25,5 +33,4 @@ function Card({product, updateAmount, addToCart}) {
   )
 }
 
-//TODO: adjust input field to not always display 0 when user clears input
 export default Card;
