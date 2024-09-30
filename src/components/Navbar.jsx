@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
+import '../styles/Navbar.css'
 
 function Navbar() {
   const currentRoute = useLocation();
@@ -11,22 +12,23 @@ function Navbar() {
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link className="navbar-btn" to="/">Home</Link>
         </li>
         <li>
-          <Link to="/shop">Shop</Link>
+          <Link className="navbar-btn" to="/shop">Shop</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link className="navbar-btn" to="/about">About</Link>
         </li>
-      </ul>
-
-      {currentRoute.pathname === '/shop' && (
-        <div>
-          <span>Cart: ({numberOfItems})</span>
+        {currentRoute.pathname === '/shop' && (
+        <div className='cart'>
+          <div>Cart: ({numberOfItems})</div>
           <button>Checkout</button>
         </div>
       )}
+      </ul>
+
+
     </nav>
   )
 }
