@@ -58,7 +58,7 @@ function Shop() {
   }
 
   return (
-    <div>
+    <div className="page">
   
       <h1>Shop Page</h1>
       <div className="product-list">

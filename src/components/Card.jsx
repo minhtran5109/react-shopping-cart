@@ -11,7 +11,7 @@ function Card({product, updateAmount, addToCart}) {
 
   return (
     <div className="card">
-      <p>Name: {product.title}</p>
+      <p>{product.title}</p>
       <p>Price: {product.price}</p>
       <img src={product.image}></img>
 
