@@ -47,12 +47,11 @@ describe("renders products info", () => {
   })
 });
 
-describe("buttons interaction", () => {
-  it("should first renders increment and decrement buttons", () => {
+describe("other buttons", () => {
+  it("should renders increment and decrement buttons", () => {
     render(<Card product={{}} updateAmount={() => {}} addToCart={() => {}}/>);
     const increment = screen.getByRole("button", { name: "+" });
     const decrement = screen.getByRole("button", { name: "-" });
-    screen.debug();
 
     expect(increment).toBeInTheDocument();
     expect(decrement).toBeInTheDocument();
