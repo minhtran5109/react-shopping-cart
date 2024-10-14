@@ -20,7 +20,8 @@ function Card({product, updateAmount, addToCart}) {
         <input 
           type="number"
           value={product.amount}
-          placeholder="0"
+          placeholder="1"
+          data-testid={`product-input-${product.id}`}
           onChange={(e) => handleInputChange(product.id, e.target.value)}
         />
         <button onClick={() => updateAmount(product.id, Math.max(product.amount-1, 1))}>-</button>
