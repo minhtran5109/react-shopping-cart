@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import Card from "../components/Card";
+import '../styles/Shop.css'
 
 const BASED_API = "https://fakestoreapi.com/products"
 const query = '?limit=5';

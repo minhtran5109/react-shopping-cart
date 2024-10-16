@@ -1,13 +1,35 @@
 /* consider css modules */
 
 .card {
-  width: 200px;
-  background-color: antiquewhite;
+  width: 250px;
+  background-color: seashell;
   margin-top: 22px;
   padding: 1.1rem;
-  border-radius: 6px;
+  border-radius: 16px;
 }
 
 .card img {
-  width: 120px;
+  width: 180px;
+}
+
+.product-info {
+  font-size: 1.1rem;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.input-number {
+  width: 15%;
+  margin: 0 15px;
+  padding: 4px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.add-to-cart {
+  margin-top: 1rem;
+  background-color: greenyellow;
+  border-radius: 20px;
 }
