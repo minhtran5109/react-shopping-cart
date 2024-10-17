@@ -1,10 +1,10 @@
 /* consider css modules */
 
 .card {
-  width: 250px;
+  width: 270px;
   background-color: seashell;
   margin-top: 22px;
-  padding: 1.1rem;
+  padding: 2rem;
   border-radius: 16px;
 }
 
@@ -16,16 +16,35 @@
   font-size: 1.1rem;
 }
 
+.product-name {
+  font-size: 1.2rem;
+}
+
+.dollar-sign {
+  font-size: 1rem;
+  position: relative;
+  bottom: 4px;
+}
+
 .price {
   font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .input-number {
   width: 15%;
   margin: 0 15px;
-  padding: 4px;
+  padding: 6px;
   font-size: 1rem;
   text-align: center;
+  border: 0;
+}
+
+.adjust-btn {
+  border-radius: 20px;
+  background-color: azure;
+  padding: 10px 16px;
+  font-size: 1.2rem;
 }
 
 .add-to-cart {

@@ -13,7 +13,7 @@ function Card({product, updateAmount, addToCart}) {
       <img src={product.image}></img>
       <div className="product-info">
         <p className='product-name'>{product.title}</p>
-        <p className='price'>${product.price}</p>
+        <p className='price'><span className='dollar-sign'>$</span>{product.price}</p>
       </div>
 
       <div>
