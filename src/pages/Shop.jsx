@@ -4,7 +4,7 @@ import Card from "../components/Card";
 import '../styles/Shop.css'
 
 const BASED_API = "https://fakestoreapi.com/products"
-const query = '?limit=5';
+const query = '?limit=15';
 
 function Shop() {
   const { numberOfItems, setNumberOfItems } = useContext(CartContext);

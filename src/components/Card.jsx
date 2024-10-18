@@ -8,15 +8,23 @@ function Card({product, updateAmount, addToCart}) {
     updateAmount(id, isNaN(newAmountValue) ? '' : newAmountValue);
   }
 
+  function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+      return text.slice(0, maxLength) + '...';
+    }
+    return text;
+  }
+
+  const productName = truncateText(product.title, 60);
   return (
     <div className="card">
       <img src={product.image}></img>
       <div className="product-info">
-        <p className='product-name'>{product.title}</p>
+        <p className='product-name'>{productName}</p>
         <p className='price'><span className='dollar-sign'>$</span>{product.price}</p>
       </div>
 
-      <div>
+      <div className='buttons-section'>
         {/* <p>Current amount: {product.amount}</p> */}
         <button onClick={() => updateAmount(product.id, product.amount === '' ? 1 : product.amount + 1)} className="adjust-btn">+</button>
         <input 
