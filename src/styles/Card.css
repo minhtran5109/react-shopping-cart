@@ -1,8 +1,8 @@
 /* consider css modules */
 
 .card {
-  width: 270px;
-  height: 50vh;
+  /* width: 270px; */
+  height: 525px;
   /* background-color: seashell; */
   background-color: white;
   margin-top: 22px;
